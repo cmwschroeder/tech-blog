@@ -2,7 +2,30 @@ const router = require('express').Router();
 const req = require('express/lib/request');
 const { User } = require('../../models');
 
-//router that handles login
+//route that creates a user
+router.post('/', async (req, res) => {
+    try{
+        const userData = await User.create({
+            name: req.body.username,
+            email: req.body.email,
+            password: req.body.password,
+        });
+
+        //save the fact that we are logged in and the user id to session storage
+        req.session.save(() => {
+            req.session.userId = userData.id;
+            req.session.loggedIn = true;
+      
+            res.status(200).json(userData);
+        });
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+//route that handles login
 router.post('/login', async (req, res) => {
     try{
         //get the user that matches the email we recieved
@@ -14,10 +37,7 @@ router.post('/login', async (req, res) => {
             return;
         }
 
-        console.log(req.body);
         const validPassword = userData.checkPassword(req.body.password);
-        console.log(validPassword);
-
         //now that we have the number we need to check the password
         if(!validPassword) {
             res.status(404).json("Incorrect email or password, please try again");

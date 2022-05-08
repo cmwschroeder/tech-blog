@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
                 id: post.id,
                 title: post.title,
                 content: post.content,
-                date_created: post.date_created,
+                date_created: (new Date(post.createdAt).getMonth() + 1) + "/" + (new Date(post.createdAt).getDate()) + '/' + (new Date(post.createdAt).getFullYear()),
                 user_id: post.user_id,
                 user: {
                     user_id: post.user.id,
@@ -30,6 +30,7 @@ router.get('/', async (req, res) => {
         posts: posts,
     });
     } catch (err) {
+        console.log(err);
         res.status(500).json(err);
     }
 });

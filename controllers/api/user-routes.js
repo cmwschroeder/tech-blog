@@ -1,6 +1,8 @@
 const router = require('express').Router();
+const req = require('express/lib/request');
 const { User } = require('../../models');
 
+//router that handles login
 router.post('/login', async (req, res) => {
     try{
         //get the user that matches the email we recieved
@@ -31,6 +33,17 @@ router.post('/login', async (req, res) => {
         });
     } catch (err) {
         res.status(500).json(err);
+    }
+});
+
+//Route that handles logout
+router.post('/logout', (req, res) => {
+    if(req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    } else {
+        res.status(404).end();
     }
 });
 

@@ -18,7 +18,7 @@
       <ul class="menu menu-horizontal p-0">
         <li><a>Dashboard</a></li>
         {{#if loggedIn}}
-        <li><a id="logout">Logout</a></li>
+        <li><a id="logout-button">Logout</a></li>
         {{else}}
         <li><a href="/login">Login</a></li>
         {{/if}}
@@ -32,5 +32,8 @@
   </main>
   
   <script src="https://cdn.tailwindcss.com"></script>
+  {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
 </body>
 </html>

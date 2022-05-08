@@ -3,7 +3,7 @@ const router = require('express').Router();
 router.get('/', (req, res) => {
     try {
         res.render('homepage', {
-        logged_in: req.session.loggedink,
+        loggedIn: req.session.loggedIn,
     });
     } catch (err) {
         res.status(500).json(err);

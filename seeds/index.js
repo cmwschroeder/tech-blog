@@ -4,7 +4,7 @@ const seedPosts = require("./post-seeds");
 
 const sequelize = require('../config/connection');
 
-//clear the database
+//clear the database and then create new tables for users and posts and give table entries
 const seedAll = async () => {
     await sequelize.sync({force: true});
     console.log('\nDATABASE SYNCED\n');

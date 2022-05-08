@@ -1,24 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="luxury">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.13.6/dist/full.css" rel="stylesheet" type="text/css" />
   <title>Tech Blog</title>
 </head>
 
 <body>
   <header>
-    <h1>
-      Tech Blog
-    </h1>
+  <div class="navbar bg-base-100">
+    <div class="flex-1">
+      <a class="btn btn-ghost normal-case text-xl">Homepage</a>
+    </div>
+    <div class="flex-none">
+      <ul class="menu menu-horizontal p-0">
+        <li><a>Dashboard</a></li>
+        {{#if loggedIn}}
+        <li><a id="logout">Logout</a></li>
+        {{else}}
+        <li><a href="/login">Login</a></li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
   </header>
-  <main>
+
+  <main class="bg-base-200 min-h-screen">
     {{{ body }}}
   </main>
-  <footer>
-      
-  </footer>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
 </body>
-
 </html>

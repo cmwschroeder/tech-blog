@@ -1,0 +1,22 @@
+<div class="w-full h-full flex flex-col">
+    <div class="card w-5/6 bg-base-100 shadow-xl my-3 mx-auto rounded-none" >
+        <div class="w-full bg-secondary p-1 flex justify-between">
+            <h2 class="text-3xl font-semibold m-2">{{post.title}}</h2>
+            <p class="text-xl m-2">Posted by {{post.user.name}} on {{post.date_created}}</p>
+        </div>
+        <div class="card-body">
+            <p class="text-xl">{{post.content}}</p>
+        </div>
+    </div>
+    <div class="divider">Comments</div>
+    {{#each comments as |comment|}}
+    <div class="card w-5/6 bg-base-100 shadow-xl my-3 mx-auto rounded-none" >
+        <div class="w-full bg-secondary p-1 flex">
+            <p class="text-xl m-2">Comment by {{comment.user}} on {{comment.date_created}}</p>
+        </div>
+        <div class="card-body">
+            <p class="text-xl">{{comment.content}}</p>
+        </div>
+    </div>
+    {{/each}}
+</div>

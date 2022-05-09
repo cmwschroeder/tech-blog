@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post } = require('../models');
+const { Post } = require('../models');
 
 //get route for the dashboard page, will show user's posts with a button to go to a different page
 //that will have input fields for the user to create a post

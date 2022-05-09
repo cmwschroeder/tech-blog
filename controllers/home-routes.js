@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post } = require('../models');
+const { User, Post, Comment } = require('../models');
 
 router.get('/', async (req, res) => {
     try {
@@ -33,6 +33,56 @@ router.get('/', async (req, res) => {
         console.log(err);
         res.status(500).json(err);
     }
+});
+
+router.get('/posts/:id', async (req, res) => {
+    if(!req.session.loggedIn) {
+        res.redirect('/login');
+        return;
+    }
+
+    const postId = req.params.id;
+
+    const postData = await Post.findByPk(postId, {
+        include: [{ model: User }],
+    });
+
+    const userPost = postData.get({ plain: true});
+
+    const post = {
+        id: userPost.id,
+        title: userPost.title,
+        content: userPost.content,
+        date_created: (new Date(userPost.createdAt).getMonth() + 1) + "/" + (new Date(userPost.createdAt).getDate()) + '/' + (new Date(userPost.createdAt).getFullYear()),
+        user_id: userPost.user_id,
+        user: {
+            user_id: userPost.user.id,
+            name: userPost.user.name,
+        },
+    };
+
+    const commentData = await Comment.findAll({
+        include: [{ model: User }],
+        where: { post_id: req.params.id},
+    }).catch((err) => { 
+        res.json(err);
+    });
+
+    const userComments = commentData.map((comment) => comment.get({ plain: true}));
+
+    const comments = userComments.map((comment) => {
+        return {
+            content: comment.content,
+            user: comment.user.name,
+            date_created: (new Date(comment.createdAt).getMonth() + 1) + "/" + (new Date(comment.createdAt).getDate()) + '/' + (new Date(comment.createdAt).getFullYear()),
+        };
+    });
+
+    res.render('comment', {
+        loggedIn: req.session.loggedIn,
+        post: post,
+        comments: comments,
+    });
 });
 
 router.get('/login', (req, res) => {

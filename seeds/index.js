@@ -1,6 +1,7 @@
 //get the functions for creating posts and users
 const seedUsers = require("./user-seeds");
 const seedPosts = require("./post-seeds");
+const seedComments = require("./comment-seeds");
 
 const sequelize = require('../config/connection');
 
@@ -13,7 +14,10 @@ const seedAll = async () => {
     console.log('\nUsers Seeded\n');
 
     await seedPosts();
-    console.log('\nPosts Seeded')
+    console.log('\nPosts Seeded');
+
+    await seedComments();
+    console.log('\nComments Seeded');
 
     process.exit(0);
 };

@@ -65,4 +65,19 @@ router.get('/update/:id', async (req, res) => {
     });
 });
 
+router.put('/update/:id', async(req, res) => {
+    try {
+        console.log(req.body);
+        await Post.update(req.body, {
+          where: {
+            id: req.params.id,
+          },
+        });
+        res.json("Post updated");
+      }
+      catch (err) {
+        res.status(500).json(err);
+      }
+});
+
 module.exports = router;

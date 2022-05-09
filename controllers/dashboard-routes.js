@@ -11,7 +11,17 @@ router.get('/', async (req, res) => {
             res.json(err);
         });
 
-        const posts = postData.map((post) => post.get({ plain: true}));
+        const userPosts = postData.map((post) => post.get({ plain: true}));
+
+        const posts = userPosts.map((post) => {
+            return {
+                id: post.id,
+                title: post.title,
+                content: post.content,
+                date_created: (new Date(post.createdAt).getMonth() + 1) + "/" + (new Date(post.createdAt).getDate()) + '/' + (new Date(post.createdAt).getFullYear()),
+                user_id: post.user_id,
+            }
+        });
         
         res.render('dashboard', {
         loggedIn: req.session.loggedIn,
@@ -40,6 +50,19 @@ router.post('/create', async (req, res) => {
     } catch(err) {
         res.status(500).json(err);
     }
+});
+
+router.get('/update/:id', async (req, res) => {
+    const postId = req.params.id;
+
+    const postData = await Post.findByPk(postId);
+
+    const post = postData.get({ plain: true});
+
+    res.render('update', {
+        loggedIn: req.session.loggedIn,
+        post: post,
+    });
 });
 
 module.exports = router;

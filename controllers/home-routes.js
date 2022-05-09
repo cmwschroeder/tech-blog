@@ -26,9 +26,9 @@ router.get('/', async (req, res) => {
         });
         
         res.render('homepage', {
-        loggedIn: req.session.loggedIn,
-        posts: posts,
-    });
+            loggedIn: req.session.loggedIn,
+            posts: posts,
+        });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);

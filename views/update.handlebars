@@ -1,0 +1,23 @@
+<div class="w-full h-full flex flex-col sm:flex-row justify-center">
+    <div class="card w-5/6 bg-base-100 shadow-xl m-3">
+        <div class="card-body">
+            <h2 class="card-title">Update Post: </h2>
+
+            <div class="form-control my-2">
+                <label class="label">
+                    <span class="label-text">Title: </span>
+                </label>
+                <textarea class="textarea textarea-primary text-xl" id="title">{{post.title}}</textarea>
+            </div>
+
+            <div class="form-control my-2">
+                <label class="label">
+                    <span class="label-text">Content: </span>
+                </label>
+                <textarea class="textarea textarea-primary h-72 text-xl" id="content">{{post.content}}</textarea>
+            </div>
+
+            <button class="btn btn-outline" id="create-button">Update Post</button>
+        </div>
+    </div>
+</div>

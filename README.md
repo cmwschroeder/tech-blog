@@ -46,6 +46,36 @@ If you would like to run the server on your local machine then follow these step
 
 ## Usage
 
+When first opening the website you will be greeted by a page that will have any postss that are already in the database. If you are the first one on the site then the site may be empty. You can view these posts on the homepage but clicking on anything besides the homepage button in the top left will bring you to a login/sign up page. Here is an example homepage screen:  
+
+![View of the homepage](./images/screenshot-one.png)  
+
+From the login page you can sign up for an account by filling up the sign up fields, or if you already have an account you can enter your email and password to log in. Here is a user making an account:  
+
+![Siging up](./images/screenshot-two.png)  
+
+Upon creating an account or signing in you will be taken back to the homepage. You can view the posts on the homepage and click on any post to bring you to a view of the post as well as any comments the post has.  
+
+![Viewing a post with it's comments](./images/screenshot-three.png)  
+
+You can leave a comment by filling in the comment box and hitting submit. Your comment would be added to the post like this:  
+
+![Viewing a post with it's comments](./images/screenshot-four.png)  
+
+You can view your dashboard at any time by clicking the dashboard button in the navbar. This page will show any posts you have created as well as a create post button. Create a post here by clicking the button and filling in the title and content of the post, like so:  
+
+![Viewing a post with it's comments](./images/screenshot-five.png)  
+
+From here it will be added to your dashboard like:  
+
+![Viewing a post with it's comments](./images/screenshot-six.png)  
+
+You may click on this post to edit the post or delete the post, you will be brought to a page similar to the create a post page but with different buttons and the title and content sections already filled in. Here is editing the post:  
+
+![Viewing a post with it's comments](./images/screenshot-seven.png)  
+
+Upon deleting a post it will be gone forever, so be careful. When you want to log out just hit the log out button.
+
 ## Questions
 If you have any questions you can reach me at:  
 Github: cmwschroeder  

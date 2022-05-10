@@ -16,6 +16,8 @@ This website functions as a blog website. You will need to have an account in or
 
 ## Link
 
+https://safe-mountain-78939.herokuapp.com/
+
 ## Technologies
 
 | Technology | Link |
@@ -40,7 +42,7 @@ This website functions as a blog website. You will need to have an account in or
 
 ## Installation
 
-If you would like to run the server on your local machine then follow these steps. First clone the repository, run an npm install, open up mysql terminal and run source db/schema when you are in the root directory of the project. Now when you quit the mysql terminal you can run the seeds for some default users, posts, and comments by typing in 'npm run seed' into the terminal. From there you can start the server by typing in 'npm start' into the terminal.
+If you would like to run the server on your local machine then follow these steps. First clone the repository, run an npm install, open up mysql terminal and run source db/schema when you are in the root directory of the project. Now when you quit the mysql terminal you can optionally run the seeds for some default users, posts, and comments by typing in 'npm run seed' into the terminal. From there you can start the server by typing in 'npm start' into the terminal.
 
 ## Usage
 
